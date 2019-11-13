@@ -1,0 +1,514 @@
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin:0 auto;
+    padding:0;
+}
+.app{
+    height: auto;
+    width: 100%;
+    overflow: auto;
+}
+.header{
+    min-width: 100%;
+    background-color: #f5f6f9;
+    height: 140px;
+    position: fixed;
+}
+.wrap{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 auto;
+}
+.wrap .logo{
+    width: 40px;
+    height: 35px;
+    margin-top: -10px;
+}
+.wrap .title{
+    color: #00303E;
+    font-size: 24px;
+    margin-left: 8px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.wrap .user{
+    float: right;
+    height: 80px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #00303E;
+    font-size: 16px;
+}
+.wrap .user img {
+    display: inline-block;
+    border: none;
+    vertical-align: middle;
+}
+.wrap .user span {
+    display: block;
+    height: 80px;
+    float: right;
+}
+.wrap .user .line {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: default;
+}
+.header .content-menu {
+    background-color: #00303E;
+}
+.header .menu-wrap {
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+    border: none;
+    list-style: none;
+    position: relative;
+}
+.menu-wrap .menu-item {
+    float: left;
+    height: 57px;
+    line-height: 57px;
+    color: #909399;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 0 17px;
+    border-bottom: 2px solid #00303E;
+}
+.menu-wrap .menu-item a {
+    color: #909399;
+    text-decoration: none;
+}
+.menu-wrap .active {
+    color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    background-color: rgb(0, 48, 62);
+}
+.menu-wrap .active a{
+    color: rgb(255, 255, 255);
+}
+.content-wrap {
+    background-color: #f5f6f9;
+    overflow-y: auto;
+    width: 100%;
+    min-height: 450px;
+    position: absolute;
+    top: 140px;
+    left: 0;
+    right: 0;
+    bottom: 0
+
+}
+.main-content{
+    overflow: hidden;
+    width: 1200px;
+    min-height: 360px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+.main-content .content-table {
+    padding-top: 20px;
+    width: 450px;
+    margin: 0 auto;
+}
+
+.main-content .content-table tr{
+    width: 300px;
+    height: 40px;
+}
+.bottom {
+    width: 100%;
+    height: 80px;
+    background: #00303e;
+    text-align: center;
+    padding-top: 5px;
+    box-sizing: border-box;
+}
+.bottom p {
+    font-size: 14px;
+    color: white;
+}
+.bottom .lastP {
+    color: #ccc;
+    font-size: 12px;
+}
+
+.main-content .left {
+    width: 280px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-right: 20px;
+    background: #fff;
+    box-sizing: border-box;
+    float: left;
+    height: auto;
+}
+.main-content .left .title {
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 20px;
+    height: 45px;
+    line-height: 45px;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 0;
+}
+.main-content .left .title img {
+    height: 10px;
+    width: 10px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.main-content .left ul {
+    list-style: none;
+    display: none;
+    list-style-type: disc;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+}
+.main-content .left ul .curLi {
+    background-color: #f2f4f5;
+}
+
+.main-content .left .curMenu {
+    background-color: #f2f4f5;
+}
+
+.main-content .left ul li {
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-left: 20px;
+}
+.main-content .left ul li span:first-child {
+    display: inline-block;
+    width: 170px;
+    height: 40px;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.main-content .left ul li span:last-child {
+    height: 40px;
+    float: right;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #b7babc;
+}
+.main-content .right {
+    width: 900px;
+    background-color: #fff;
+    padding-bottom: 20px;
+    float: left;
+    height: auto;
+}
+.main-content .right .tagTitle {
+    height: 3.75rem;
+    line-height: 3.75rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1px solid #E9EDF2;
+}
+.main-content .right .tagTitle .yiji {
+    font-size: 18px;
+    color: #2d3135;
+    font-weight: 600;
+}
+.main-content .right .tagTitle .erji {
+    font-size: 14px;
+}
+
+.main-content .right .search {
+    height: 40px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+.btn {
+    padding: 9px 15px;
+    font-size: 12px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #00303E;
+    border-color: #00303E;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #dcdfe6;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    font-weight: 500;
+}
+
+.main-content .service-detail-bg {
+    background-color: #fff;
+    width: 100%;
+}
+.main-content .service-detail-bg .top-wrap .ul-wrap {
+    width: 100%;
+    border-bottom: 1px solid #E9EDF2;
+    background-color: #fff;
+}
+.main-content .service-detail-bg .top-wrap .ul-wrap .menu-wrap {
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+}
+.main-content .service-detail-bg .top-wrap .ul-wrap .menu-wrap .current_li {
+    color: #00303E;
+    font-weight: 600;
+    border-bottom: 2px solid #00303E;
+}
+.main-content .service-detail-bg .top-wrap .ul-wrap .menu-wrap li {
+    float: left;
+    font-size: 16px;
+    padding: 0 10px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 30px;
+    cursor: pointer;
+}
+ol, ul {
+    list-style: none;
+}
+.service-detail-bg .service-detail .detail {
+     padding: 0 40px 40px 40px;
+ }
+
+.service-detail-bg .service-detail .detail .pstyle  span:first-child{
+    vertical-align: top;
+    width: 100px;
+    display: inline-block;
+}
+.service-detail-bg .service-detail .detail .detail-content p {
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #575f66;
+}
+.detailDiv {
+    clear: both;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding: 0 1.875rem;
+    box-sizing: border-box;
+}
+.detailDiv .detail {
+    margin: 0 auto;
+    margin-bottom: 1.25rem;
+}
+.detail .detailTitle {
+    height: 3.125rem;
+    padding-left: 20px;
+    background-color: #f2f4f5;
+    line-height: 3.125rem;
+    font-size: 14px;
+    color: #00303E;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.detail .detailTitle .span-name{
+    font-size: 15px;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}
+.detail .detailTitle .seeicon {
+    float: right;
+    margin-right: 20px;
+}
+.detail .detailTitle .applyicon{
+    float: right;
+    margin-right: 20px;
+}
+.detail .detailTitle img{
+    display: inline-block;
+    border: none;
+    vertical-align: middle;
+}
+.detail .detailContent{
+    padding: 1.25rem;
+    border-right: 1px solid #E9EDF2;
+    border-bottom: 1px solid #E9EDF2;
+    border-left: 1px solid #E9EDF2;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    overflow: hidden;
+}
+.detail .detailContent p{
+    font-size: 14px;
+    color: #575f66;
+    float: left;
+    width: 47%;
+    margin: 0 5px 0  0;
+    height: 26px;
+    line-height: 26px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.pHeight {
+    height: 35px !important;
+    line-height: 35px !important;
+}
+.main-content .manageHome {
+    min-width: 1100px;
+    background-color: #f5f6f9;
+    position: relative;
+}
+.manageHome .bgDiv {
+    width: 100%;
+    height: 255px;
+    background: url(/images/bg.png) center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+.manageHome .bgDiv .inputDiv {
+    width: 450px;
+    height: 37.5px;
+    margin: 84px auto 0;
+    overflow: hidden;
+}
+.manageHome .bgDiv .hInput {
+    float: left;
+    width: 378px;
+    height: 37.5px;
+    background: white;
+    padding-left: 12px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.manageHome .bgDiv span {
+    display: block;
+    float: left;
+    height: 37.5px;
+    width: 60px;
+    cursor: pointer;
+    background-color: #00303E;
+    position: relative;
+}
+.manageHome .bgDiv span img {
+    position: absolute;
+    top: 12px;
+    left: 22.5px;
+    width: 15px;
+    height: 15px;
+}
+.manageHome .service {
+    width: 1200px;
+    height: 226px;
+    margin: 0 auto;
+    margin-top: 44.6px;
+    margin-bottom: 82px;
+}
+.manageHome .service .left {
+    width: calc(50% - 30px);
+    height: 226px;
+    background: white;
+    float: left;
+    margin-right: 30px;
+}
+.manageHome .service .right {
+    width: calc(50% - 30px);
+    height: 226px;
+    background: white;
+    float: left;
+    margin-left: 30px;
+}
+.manageHome .service .left .title, .manageHome .service .right .title {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    border-bottom: 1px solid #E9EDF2;
+}
+.manageHome .service .left .title .titleSpan, .manageHome .service .right .title .titleSpan {
+    float: left;
+    margin-left: 30px;
+    font-size: 18px;
+    color: #00303e;
+}
+.manageHome .service .left .title .more, .manageHome .service .right .title .more {
+    float: right;
+}
+.manageHome .service .left .title .more span, .manageHome .service .right .title .more span {
+    font-size: 14px;
+    color: #575f66;
+    cursor: pointer;
+}
+
+.manageHome .service .left .title .more img, .manageHome .service .right .title .more img {
+    vertical-align: middle;
+    margin-top: -3px;
+    margin-right: 30px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.manageHome .service .left .content, .manageHome .service .right .content {
+    width: 100%;
+    height: 170px;
+}
+.manageHome .service .left .content ul li, .manageHome .service .right .content ul li {
+    width: 100%;
+    float: left;
+    font-size: 14px;
+    height: 26px;
+    line-height: 26px;
+    color: #00303e;
+    padding-left: 25px;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.tableWrap{
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+}
+
+.tableWrap thead th{
+    background-color: #f7fcff;
+    color: rgb(87, 95, 102);
+    font-weight: 600;
+    padding: 0px;
+    border: 1px solid #ebeef5;
+    border-right: 1px solid #ebeef5;
+    line-height: 45px;
+    font-size: 14px;
+}
+.tableWrap tbody td {
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #fff;
+    color: rgb(87, 95, 102);
+    padding: 0px;
+    border: 1px solid #ebeef5;
+    border-right: 1px solid #ebeef5;
+    line-height: 35px;
+    font-size: 12px;
+}
+input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
