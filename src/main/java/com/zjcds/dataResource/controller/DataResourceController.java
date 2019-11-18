@@ -1,18 +1,17 @@
 package com.zjcds.dataResource.controller;
 
-import com.zjcds.dataResource.pojo.DataResourcePojo;
 import com.zjcds.dataResource.service.DataResourceService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 /**
- * 数据资源信息
+ * 源信息
  */
 @RestController
 @RequestMapping("/dataResource")
@@ -20,11 +19,12 @@ public class DataResourceController {
 
     //获取日志记录器Logger
     private static Logger log = Logger.getLogger(DataResourceController.class);
-    @Autowired
+    @Autowired(required = true)
     private DataResourceService dataResourceService;
 
     /**
      * 返回数据资源信息列表页面
+     *
      * @return
      */
     @RequestMapping("/resourceInfo")
@@ -37,17 +37,19 @@ public class DataResourceController {
 
     /**
      * 查询数据资源列表
+     *
      * @return
      */
-    @RequestMapping(value = "/getDataResourceList", method = RequestMethod.GET)
-    public List<DataResourcePojo> getDataResourceList() {
-        List<DataResourcePojo> result = dataResourceService.getDataResourceList();
+    @RequestMapping(value = "/getDataResourceList")
+    public List<Map<String,Object>> getDataResourceList() {
+        List<Map<String,Object>> result = dataResourceService.getDataResourceList();
         log.info("查询数据资源列表");
         return result;
     }
 
     /**
      * 返回服务注册系统新增页面
+     *
      * @return
      */
     @RequestMapping("/addSystemInfo")

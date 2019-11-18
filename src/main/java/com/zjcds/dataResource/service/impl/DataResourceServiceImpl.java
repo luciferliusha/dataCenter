@@ -1,19 +1,20 @@
 package com.zjcds.dataResource.service.impl;
 
 import com.zjcds.dataResource.dao.DataResourceDao;
-import com.zjcds.dataResource.pojo.DataResourcePojo;
 import com.zjcds.dataResource.service.DataResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
-@Service
+@Service("DataResourceService")
 public class DataResourceServiceImpl implements DataResourceService {
-	@Autowired
-	private DataResourceDao serverResourceDao;
 
-	public List<DataResourcePojo> getDataResourceList() {
-		return serverResourceDao.getDataResourceList();
+	@Autowired
+	private DataResourceDao dataResourceDao;
+
+	public List<Map<String,Object>> getDataResourceList() {
+		return dataResourceDao.getDataResourceList();
 	}
 }

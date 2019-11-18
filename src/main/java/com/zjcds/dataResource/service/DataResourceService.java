@@ -1,13 +1,11 @@
 package com.zjcds.dataResource.service;
 
-import com.zjcds.dataResource.pojo.DataResourcePojo;
-
 import java.util.List;
+import java.util.Map;
 
 /**
- * 服务注册
+ * 资源注册
  */
 public interface DataResourceService {
-
-    List<DataResourcePojo> getDataResourceList();
+    List<Map<String,Object>> getDataResourceList();
 }

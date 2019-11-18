@@ -64,17 +64,15 @@
                         <span class="seeicon"><img src="images/seeicon.png">浏览量：1次</span>
                         <span class="applyicon"><img src="images/applyicon.png">申请量：2次</span>
                     </div>
-                        <c:forEach items="${DataResourceList}" var="item">
-                            <div class="detailContent">
-                                <p><span>资源类型 ：</span>item.resourceType</p>
-                                <p><span>资源名称 ：</span>item.resourceName</p>
-                                <p><span>表名称 ：</span>item.tableName1</p>
-                                <p><span>更新周期：</span>item.updateCycle</p>
-                                <p><span>描述：</span>item.description</p>
-                                <p><span>备注：</span>item.remark</p>
-                            </div>
-                        </c:forEach>
-                </div>
+                        <div class="detailContent">
+                            <p><span>资源类型 ：</span>item.resourceType</p>
+                            <p><span>资源名称 ：</span>item.resourceName</p>
+                            <p><span>表名称 ：</span>item.tableName1</p>
+                            <p><span>更新周期：</span>item.updateCycle</p>
+                            <p><span>描述：</span>item.description</p>
+                            <p><span>备注：</span>item.remark</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
