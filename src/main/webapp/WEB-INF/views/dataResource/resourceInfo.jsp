@@ -43,36 +43,8 @@
                         <span onclick="goRegister()">注册</span>
                     </button>
                 </div>
+                <%-- 动态加载的内容，通过ajax获取 --%>
                 <div class="detailDiv">
-                    <div class="detail">
-                        <div class="detailTitle">
-                            <span class="span-name" onclick="goDetail()">数据资源信息</span>
-                            <span class="seeicon"><img src="images/seeicon.png">浏览量：1次</span>
-                            <span class="applyicon"><img src="images/applyicon.png">申请量：2次</span>
-                        </div>
-                        <div class="detailContent">
-                            <p><span>资源名称 ：</span>xxx</p>
-                            <p><span>表名称 ：</span>xxx</p>
-                            <p><span>更新周期：</span>xxx</p>
-                            <p><span>描述：</span>xxx</p>
-                            <p><span>备注：</span>xxx</p>
-                        </div>
-                    </div>
-                    <div class="detail">
-                    <div class="detailTitle">
-                        <span class="span-name" onclick="goDetail()">数据资源信息</span>
-                        <span class="seeicon"><img src="images/seeicon.png">浏览量：1次</span>
-                        <span class="applyicon"><img src="images/applyicon.png">申请量：2次</span>
-                    </div>
-                        <div class="detailContent">
-                            <p><span>资源类型 ：</span>item.resourceType</p>
-                            <p><span>资源名称 ：</span>item.resourceName</p>
-                            <p><span>表名称 ：</span>item.tableName1</p>
-                            <p><span>更新周期：</span>item.updateCycle</p>
-                            <p><span>描述：</span>item.description</p>
-                            <p><span>备注：</span>item.remark</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -113,22 +85,20 @@
             type: 'get',
             dataType:"json",
             success:function(res) {
-                console.log(res)
                 var dataResourceStr = '';
-                for (var i = 0;i<res.data.length;i++) {
+                for (var i = 0;i<res.length;i++) {
                     dataResourceStr += '<div class="detail">'
-                    dataResourceStr += '<div class="detailTitle">'
-                    dataResourceStr +=       '<span class="span-name" onclick="goDetail()">数据资源信息</span>'
-                    dataResourceStr +=   '</div>'
-                    dataResourceStr +=    '<div class="detailContent">'
-                    dataResourceStr +=    '<p><span>资源类型 ：</span>'+kkk+'</p>'
-                    dataResourceStr +=     '<p><span>资源名称 ：</span>'+kkk+'</p>'
-                    dataResourceStr +=    '<p><span>表名称 ：</span>'+kkk+'</p>'
-                    dataResourceStr +=    '<p><span>更新周期：</span>'+kkk+'</p>'
-                    dataResourceStr +=    '<p><span>描述：</span>'+kkk+'</p>'
-                    dataResourceStr +=    '<p><span>备注：</span>'+kkk+'</p>'
-                    dataResourceStr +=    '</div>'
-                    dataResourceStr +='</div>'
+                    dataResourceStr +=     '<div class="detailTitle">'
+                    dataResourceStr +=         '<span class="span-name" onclick="goDetail()">数据资源信息</span>'
+                    dataResourceStr +=     '</div>'
+                    dataResourceStr +=     '<div class="detailContent">'
+                    dataResourceStr +=         '<p><span>资源名称 ：</span>' + res[i].resourceName + '</p>'
+                    dataResourceStr +=         '<p><span>表名称 ：</span>' + res[i].tableName1 + '</p>'
+                    dataResourceStr +=         '<p><span>描述 ：</span>' + res[i].description + '</p>'
+                    dataResourceStr +=         '<p><span>更新周期：</span>' + res[i].updateCycle + '</p>'
+                    dataResourceStr +=         '<p><span>备注：</span>' + res[i].remark + '</p>'
+                    dataResourceStr +=     '</div>'
+                    dataResourceStr += '</div>'
                 }
                 $(".detailDiv").html(dataResourceStr)
             }

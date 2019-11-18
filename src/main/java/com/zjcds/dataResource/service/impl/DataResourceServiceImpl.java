@@ -14,6 +14,10 @@ public class DataResourceServiceImpl implements DataResourceService {
 	@Autowired
 	private DataResourceDao dataResourceDao;
 
+	/**
+	 * 查询资源信息列表
+	 * @return
+	 */
 	public List<Map<String,Object>> getDataResourceList() {
 		return dataResourceDao.getDataResourceList();
 	}
