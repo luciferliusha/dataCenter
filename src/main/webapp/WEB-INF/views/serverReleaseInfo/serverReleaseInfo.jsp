@@ -44,37 +44,19 @@
                     </button>
                 </div>
                 <div class="detailDiv">
-                    <div class="detail">
-                        <div class="detailTitle">
-                            <span class="span-name" onclick="goDetail()">服务资源信息</span>
-                            <button class="btn">
-                                <span >发布</span>
-                            </button>
-                            <span class="seeicon"><img src="images/seeicon.png">浏览量：1次</span>
-                            <span class="applyicon"><img src="images/applyicon.png">申请量：2次</span>
-                        </div>
-                        <div class="detailContent">
-                            <p><span>信息项名称：</span>xxx</p>
-                            <p><span>信息项描述：</span>xxx</p>
-                            <p><span>数据类型：</span>xxx</p>
-                            <p><span>数据长度：</span>xxx</p>
-                            <p><span>数据精度：</span>xxx</p>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <div class="detailTitle">
-                            <span class="span-name" onclick="goDetail()">服务资源信息</span>
-                            <span class="seeicon"><img src="images/seeicon.png">浏览量：1次</span>
-                            <span class="applyicon"><img src="images/applyicon.png">申请量：2次</span>
-                        </div>
-                        <div class="detailContent">
-                            <p><span>信息项名称：</span>xxx</p>
-                            <p><span>信息项描述：</span>xxx</p>
-                            <p><span>数据类型：</span>xxx</p>
-                            <p><span>数据长度：</span>xxx</p>
-                            <p><span>数据精度：</span>xxx</p>
-                        </div>
-                    </div>
+<%--                    <div class="detail">--%>
+<%--                        <div class="detailTitle">--%>
+<%--                            <span class="span-name" onclick="goDetail()">服务资源信息</span>--%>
+<%--                            <button class="btn">--%>
+<%--                                <span >发布</span>--%>
+<%--                            </button>--%>
+<%--                        </div>--%>
+<%--                        <div class="detailContent">--%>
+<%--                            <p><span>服务类型：</span>xxx</p>--%>
+<%--                            <p><span>服务名称：</span>xxx</p>--%>
+<%--                            <p><span>服务描述：</span>xxx</p>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </div>
         </div>
@@ -88,6 +70,8 @@
     $(function () {
         // 切换一级菜单
         switchMenu();
+        // 得到服务资源列表
+        getServiceResourceList();
     });
     // 切换一级菜单
     function switchMenu() {
@@ -101,6 +85,31 @@
     // 跳转服务注册详情页面
     function goDetail() {
         window.location.href = "/serverResourceDetail/serverResourceDetail"
+    }
+
+    // 查询服务资源列表
+    function getServiceResourceList() {
+        $.ajax({
+            url:'/serverRelease/getServiceResourceList',
+            type: 'get',
+            dataType:"json",
+            success:function(res) {
+                var serverReleaseStr = '';
+                for (var i = 0;i<res.length;i++) {
+                    serverReleaseStr += '<div class="detail">'
+                    serverReleaseStr +=     '<div class="detailTitle">'
+                    serverReleaseStr +=         '<span class="span-name" onclick="goDetail()">服务资源信息</span>'
+                    serverReleaseStr +=     '</div>'
+                    serverReleaseStr +=     '<div class="detailContent">'
+                    serverReleaseStr +=         '<p><span>资源名称 ：</span>' + res[i].serviceName + '</p>'
+                    serverReleaseStr +=         '<p><span>服务名称 ：</span>' + res[i].serviceName + '</p>'
+                    serverReleaseStr +=         '<p><span>描述 ：</span>' + res[i].serviceDesc + '</p>'
+                    serverReleaseStr +=     '</div>'
+                    serverReleaseStr += '</div>'
+                }
+                $(".detailDiv").html(serverReleaseStr)
+            }
+        })
     }
 
 

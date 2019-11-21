@@ -12,4 +12,6 @@ public interface DataResourceService {
      * @return
      */
     List<Map<String,Object>> getDataResourceList();
+
+    int saveDataResource(Map<String, Object> params);
 }

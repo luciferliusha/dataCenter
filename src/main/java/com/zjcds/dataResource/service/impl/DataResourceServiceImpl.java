@@ -21,4 +21,8 @@ public class DataResourceServiceImpl implements DataResourceService {
 	public List<Map<String,Object>> getDataResourceList() {
 		return dataResourceDao.getDataResourceList();
 	}
+
+	public int saveDataResource(Map<String, Object> params) {
+		return dataResourceDao.saveDataResource(params);
+	}
 }

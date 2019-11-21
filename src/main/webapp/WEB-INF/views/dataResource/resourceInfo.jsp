@@ -70,12 +70,12 @@
     }
     // 跳转到资源注册页面
     function goRegister() {
-        window.location.href = "/serverRegister/serverRegister";
+        window.location.href = "/dataResource/resourceRegister";
     }
 
     // 跳转资源详情页面
-    function goDetail() {
-        window.location.href = "/dataResourceDetail/dataResourceDetail"
+    function goDetail(id) {
+        window.location.href = "/dataResourceDetail/dataResourceDetail?id="+id
     }
 
     // 查询数据资源列表
@@ -86,10 +86,11 @@
             dataType:"json",
             success:function(res) {
                 var dataResourceStr = '';
+                console.log(res)
                 for (var i = 0;i<res.length;i++) {
                     dataResourceStr += '<div class="detail">'
                     dataResourceStr +=     '<div class="detailTitle">'
-                    dataResourceStr +=         '<span class="span-name" onclick="goDetail()">数据资源信息</span>'
+                    dataResourceStr +=         '<span class="span-name" onclick="goDetail('+res[i].id+')">数据资源信息</span>'
                     dataResourceStr +=     '</div>'
                     dataResourceStr +=     '<div class="detailContent">'
                     dataResourceStr +=         '<p><span>资源名称 ：</span>' + res[i].resourceName + '</p>'
@@ -100,7 +101,7 @@
                     dataResourceStr +=     '</div>'
                     dataResourceStr += '</div>'
                 }
-                $(".detailDiv").html(dataResourceStr)
+                $(".detailDiv").html(dataResourceStr);
             }
         })
     }

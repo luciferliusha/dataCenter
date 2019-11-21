@@ -16,4 +16,24 @@
         FROM
             dataresource
 	</select>
+    <!--  注册数据资源信息  -->
+    <insert id="saveDataResource" parameterType="map">
+        insert into dataresource
+        (
+            resource_type,
+            resource_name,
+            table_name1,
+            description,
+            update_cycle,
+            remark
+        )
+        values(
+            #{resourceType},
+            #{resourceName},
+            #{tableName1},
+            #{description},
+            STR_TO_DATE(#{updateCycle},'%Y-%m-%d'),
+            #{remark}
+        )
+    </insert>
 </mapper>
