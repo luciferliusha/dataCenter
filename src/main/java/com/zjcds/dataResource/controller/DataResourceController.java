@@ -46,9 +46,9 @@ public class DataResourceController {
      * @return
      */
     @RequestMapping(value = "/getDataResourceList", method = RequestMethod.GET)
-    public List<Map<String, Object>> getDataResourceList() {
+    public List<Map<String, Object>> getDataResourceList(HttpServletRequest request,@RequestParam Map<String,Object> param) {
         // 查询数据资源信息列表数据
-        List<Map<String, Object>> result = dataResourceService.getDataResourceList();
+        List<Map<String, Object>> result = dataResourceService.getDataResourceList(param);
         log.info("查询数据资源列表");
         return result;
     }

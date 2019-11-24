@@ -44,11 +44,11 @@
                         <div style="margin: 10px 15px;">
                             <p class="pstyle">
                                 <span>服务名称：</span>
-                                <input type="text" placeholder="请输入服务名称" style="width: 200px;height: 20px;"/>
+                                <input id="serviceName" type="text" placeholder="请输入服务名称" style="width: 200px;height: 20px;"/>
                             </p>
                             <p class="pstyle">
                                 <span>服务描述：</span>
-                                <textarea rows="8" cols="135" placeholder="请输入服务描述"></textarea>
+                                <textarea id="serviceDesc"  rows="8" cols="135" placeholder="请输入服务描述"></textarea>
                             </p>
                             <p class="pstyle">
                                 <span>服务类型：</span>
@@ -63,64 +63,79 @@
                             <div class="server-type" id="db" style="margin-left: 100px;">
                                 <p class="pstyle">
                                     <span>IP：</span>
-                                    <input type="text" placeholder="请输入IP" style="width: 200px;height: 20px;"/>
+                                    <input id="dbIp" type="text" placeholder="请输入IP" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
                                     <span>端口：</span>
-                                    <input type="text" placeholder="请输入端口" style="width: 200px;height: 20px;"/>
+                                    <input id="dbPort" type="text" placeholder="请输入端口" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
                                     <span>数据库名称：</span>
-                                    <input type="text" placeholder="请输入数据库名称" style="width: 200px;height: 20px;"/>
+                                    <input id="dbName" type="text" placeholder="请输入数据库名称" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
                                     <span>表名：</span>
-                                    <input type="text" placeholder="请输入表名" style="width: 200px;height: 20px;"/>
+                                    <input id="dbTableName" type="text" placeholder="请输入表名" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
                                     <span>用户名：</span>
-                                    <input type="text" placeholder="请输入用户名" style="width: 200px;height: 20px;"/>
+                                    <input id="dbUsername" type="text" placeholder="请输入用户名" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
                                     <span>密码：</span>
-                                    <input type="text" placeholder="请输入密码" style="width: 200px;height: 20px;"/>
+                                    <input id="dbPassword" type="text" placeholder="请输入密码" style="width: 200px;height: 20px;"/>
                                 </p>
                             </div>
                             <%--  webservice  --%>
                             <div class="server-type" id="webService" style="margin-left: 100px;display: none">
                                 <p class="pstyle">
                                     <span>IP：</span>
-                                    <input type="text" placeholder="请输入IP" style="width: 200px;height: 20px;"/>
+                                    <input id="wsdlIp" type="text" placeholder="请输入IP" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
                                     <span>端口：</span>
-                                    <input type="text" placeholder="请输入端口" style="width: 200px;height: 20px;"/>
+                                    <input id="wsdlPort" type="text" placeholder="请输入端口" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
-                                    <span>wsdl：</span>
-                                    <input type="text" placeholder="请输入wsdl" style="width: 200px;height: 20px;"/>
+                                    <span>url：</span>
+                                    <input id="wsdlUrl" type="text" placeholder="请输入url" style="width: 200px;height: 20px;"/>
                                 </p>
                             </div>
                             <%--  `restful` --%>
                             <div class="server-type" id="restful" style="margin-left: 100px;display: none">
                                 <p class="pstyle">
                                     <span>restful：</span>
-                                    <input type="text" placeholder="请输入请求方式" style="width: 200px;height: 20px;"/>
+                                    <input id="restfulMethod" type="text" placeholder="请输入请求方式" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
+                                    <span>IP：</span>
+                                    <input id="restfulIp" type="text" placeholder="请输入IP" style="width: 200px;height: 20px;"/>
+                                </p><p class="pstyle">
+                                    <span>端口：</span>
+                                    <input id="restfulPort" type="text" placeholder="请输入端口" style="width: 200px;height: 20px;"/>
+                                </p><p class="pstyle">
                                     <span>url：</span>
-                                    <input type="text" placeholder="请输入请求url" style="width: 200px;height: 20px;"/>
+                                    <input id="restfulUrl" type="text" placeholder="请输入请求url" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
                                     <span>参数：</span>
-                                    <input type="text" placeholder="请输入请求参数" style="width: 200px;height: 20px;"/>
+                                    <input id="restfulParam" type="text" placeholder="请输入请求参数" style="width: 200px;height: 20px;"/>
                                 </p>
                             </div>
                             <%--  ftp  --%>
                             <div class="server-type" id="ftp" style="margin-left: 100px;display: none">
                                 <p class="pstyle">
                                     <span>ftp：</span>
-                                    <input type="text" placeholder="请输入IP" style="width: 200px;height: 20px;"/>
+                                    <input id="ftpIp" type="text" placeholder="请输入IP" style="width: 200px;height: 20px;"/>
+                                </p> <p class="pstyle">
+                                    <span>端口：</span>
+                                    <input id="ftpPort" type="text" placeholder="请输入端口" style="width: 200px;height: 20px;"/>
+                                </p> <p class="pstyle">
+                                    <span>用户名：</span>
+                                    <input id="ftpUsername" type="text" placeholder="请输入用户名" style="width: 200px;height: 20px;"/>
+                                </p> </p> <p class="pstyle">
+                                    <span>密码：</span>
+                                    <input id="ftpPassword" type="text" placeholder="请输入密码" style="width: 200px;height: 20px;"/>
                                 </p>
                             </div>
                             <p class="pstyle">
@@ -143,53 +158,21 @@
                         <div id="dataResourceTable" style="margin: 10px 15px;display: none">
                             <table class="tableWrap">
                                 <thead>
-                                <th>资源名称</th>
-                                <th>资源名称</th>
-                                <th>资源名称</th>
-                                <th>资源名称</th>
-                                <th>资源名称</th>
-                                <th>资源名称</th>
+                                <th>数据项名称</th>
+                                <th>表字段名称</th>
+                                <th>数据类型</th>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>xx</td>
                                     <td>xx</td>
                                     <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
                                 </tr>
                                 <tr>
                                     <td>xx</td>
                                     <td>xx</td>
                                     <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                </tr>
-                                <tr>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                </tr>
-                                <tr>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                </tr>
-                                <tr>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
+
                                 </tr>
                                 </tbody>
                             </table>
@@ -215,7 +198,7 @@
                     </div>
                 </div>
                 <button class="btn" style="margin-left: 1050px;margin-bottom:20px;">
-                    <span onclick="submit()">提交</span>
+                    <span onclick="addServiceResource()">提交</span>
                 </button>
                 <button class="btn" style="float:right;margin-right: 30px;margin-bottom:20px;">
                     <span onclick="goBackServerResource()">返回</span>
@@ -258,13 +241,52 @@
     $(function() {
         switchMenu();
     });
-    // 服务注册提交
-    function submit() {
-        alert("服务注册成功！")
+
+
+    // 增加服务资源信息
+    function addServiceResource() {
+        // 提交的参数
+        var params = {
+            serviceName : $("#serviceName").val(),
+            serviceDesc : $("#serviceDesc").val(),
+            dbIp : $("#dbIp").val(),
+            dbPort : $("#dbPort").val(),
+            dbName : $("#dbName").val(),
+            dbTableName : $("#dbTableName").val(),
+            dbUsername : $("#dbUsername").val(),
+            dbPassword : $("#dbPassword").val(),
+            wsdlIp : $("#wsdlIp").val(),
+            wsdlPort : $("#wsdlPort").val(),
+            wsdlUrl : $("#wsdlUrl").val(),
+            restfulMethod : $("#restfulMethod").val(),
+            restfulIp : $("#restfulIp").val(),
+            restfulPort : $("#restfulPort").val(),
+            restfulUrl : $("#restfulUrl").val(),
+            restfulParam : $("#restfulParam").val(),
+            ftpIp : $("#ftpIp").val(),
+            ftpPort : $("#ftpPort").val(),
+            ftpUsername : $("#ftpUsername").val(),
+            ftpPassword : $("#ftpPassword").val()
+        }
+        $.ajax({
+            url: '/serverRelease/saveServiceResource',
+            type: "post",
+            dataType: "json",
+            data: params,
+            success:function(res) {
+                if (res.message === 'success') {
+                    alert("添加成功！");
+                } else {
+                    alert("添加失败！");
+                }
+            }
+        });
+        return false;
     }
+
     // 跳转到服务注册页面
     function goBackResourceInfo() {
-        window.location.href = "/dataResource/resourceInfo";
+        window.location.href = "/serverReleaseInfo/serverReleaseInfo";
     }
 
     function switchMenu() {

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace 标识映射文件  -->
 <mapper namespace="com.zjcds.dataResource.dao.DataResourceDao">
-    <select id="getDataResourceList" resultType="java.util.Map">
+    <select id="getDataResourceList" resultType="java.util.Map" parameterType="map">
 		SELECT
             id "id",
             resource_type "resourceType",
@@ -15,7 +15,13 @@
             remark "remark"
         FROM
             dataresource
+        <where>
+            <if test="resourceName != null and resourceName != ''">
+             and resource_name like '%' #{resourceName} '%'
+            </if>
+        </where>
 	</select>
+
     <!--  注册数据资源信息  -->
     <insert id="saveDataResource" parameterType="map">
         insert into dataresource

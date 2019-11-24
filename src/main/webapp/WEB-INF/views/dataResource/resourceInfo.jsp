@@ -35,9 +35,9 @@
                 </div>
                 <div class="search">
                     <label>资源名称</label>
-                    <input type="text" class="easyui-text">
+                    <input id="resourceName" type="text">
                     <button class="btn">
-                        <span>查询</span>
+                        <span onclick="getDataResourceList()">查询</span>
                     </button>
                     <button class="btn">
                         <span onclick="goRegister()">注册</span>
@@ -80,9 +80,13 @@
 
     // 查询数据资源列表
     function getDataResourceList() {
+        var param = {
+            resourceName: $("#resourceName").val()
+        }
         $.ajax({
             url:'/dataResource/getDataResourceList',
             type: 'get',
+            data: param,
             dataType:"json",
             success:function(res) {
                 var dataResourceStr = '';
@@ -93,7 +97,7 @@
                     dataResourceStr +=         '<span class="span-name" onclick="goDetail('+res[i].id+')">数据资源信息</span>'
                     dataResourceStr +=     '</div>'
                     dataResourceStr +=     '<div class="detailContent">'
-                    dataResourceStr +=         '<p><span>资源名称 ：</span>' + res[i].resourceName + '</p>'
+                    dataResourceStr +=         '<p><span >资源名称 ：</span>' + res[i].resourceName + '</p>'
                     dataResourceStr +=         '<p><span>表名称 ：</span>' + res[i].tableName1 + '</p>'
                     dataResourceStr +=         '<p><span>描述 ：</span>' + res[i].description + '</p>'
                     dataResourceStr +=         '<p><span>更新周期：</span>' + res[i].updateCycle + '</p>'
@@ -105,4 +109,5 @@
             }
         })
     }
+
 </script>

@@ -11,7 +11,8 @@ public interface DataResourceService {
      * 查询数据资源信息列表
      * @return
      */
-    List<Map<String,Object>> getDataResourceList();
+    List<Map<String,Object>> getDataResourceList(Map<String,Object> param);
 
     int saveDataResource(Map<String, Object> params);
+
 }

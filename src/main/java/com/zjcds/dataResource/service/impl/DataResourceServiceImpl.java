@@ -18,8 +18,9 @@ public class DataResourceServiceImpl implements DataResourceService {
 	 * 查询资源信息列表
 	 * @return
 	 */
-	public List<Map<String,Object>> getDataResourceList() {
-		return dataResourceDao.getDataResourceList();
+
+	public List<Map<String, Object>> getDataResourceList(Map<String,Object> param) {
+		return dataResourceDao.getDataResourceList(param);
 	}
 
 	public int saveDataResource(Map<String, Object> params) {

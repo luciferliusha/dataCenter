@@ -23,12 +23,9 @@
                         <div class="detailTitle">
                             <span class="span-name" style="text-decoration: none;">数据资源信息详情页面</span>
                         </div>
-                        <div class="detailContent">
-                            <p class="pHeight"><span>资源&nbsp&nbsp&nbsp&nbspid：</span>xxx</p>
-                            <p class="pHeight"><span>资源名称：</span>xxx</p>
-                            <p class="pHeight"><span>信息类型：</span>xxx</p>
-                            <p class="pHeight"><span>提供方式：</span>xxx</p>
-                            <p class="pHeight"><span>更新周期：</span>xxx</p>
+                        <%-- 动态加载--%>
+                        <div id="resourceDetail" class="detailContent">
+
                         </div>
                     </div>
                 </div>
@@ -36,13 +33,37 @@
                     <span onclick="goBackResourceInfo()">返回</span>
                 </button>
             </div>
-        <jsp:include page="../../common/footer.jsp"></jsp:include>
+            <jsp:include page="../../common/footer.jsp"></jsp:include>
+        </div>
     </div>
-</div>
 </body>
 </html>
 <script type="text/javascript">
-    // 跳转到服务注册页面
+    // 页面一加载就执行
+    $(function () {
+        var id = getQueryString("id");
+        getDataResourceDetailById(id);
+    });
+    // 资源详情
+    function getDataResourceDetailById(id) {
+        $.ajax({
+            url:'/dataResourceDetail/getDataResourceDetailById/' + id,
+            type: 'get',
+            dataType:"json",
+            success:function (res) {
+                var dataResourceStr = '';
+                    dataResourceStr += '<p><span>资源类型 ：</span>' + res.resourceType + '</p>'
+                    dataResourceStr += '<p><span>资源名称 ：</span>' + res.resourceName + '</p>'
+                    dataResourceStr += '<p><span>表名称 ：</span>' + res.tableName1 + '</p>'
+                    dataResourceStr += '<p><span>描述 ：</span>' + res.description+ '</p>'
+                    dataResourceStr += '<p><span>更新周期：</span>' + res.updateCycle+ '</p>'
+                    dataResourceStr += '<p><span>备注：</span>' + res.remark + '</p>';
+                $("#resourceDetail").html(dataResourceStr);
+                //$("#dbip").val(res.dbip)
+            }
+        })
+    }
+    // 跳转到资源注册页面
     function goBackResourceInfo() {
         window.location.href = "/dataResource/resourceInfo";
     }

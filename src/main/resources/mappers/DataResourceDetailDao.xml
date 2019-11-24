@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 标识映射文件  -->
+<mapper namespace="com.zjcds.dataResource.dao.DataResourceDetailDao">
+    <select id="getDataResourceDetailById" resultType="java.util.Map">
+		SELECT
+            id "id",
+            resource_type "resourceType",
+            resource_name "resourceName",
+            table_name1 "tableName1",
+            description "description",
+            update_cycle "updateCycle",
+            remark "remark"
+        FROM
+            dataresource
+        WHERE id = #{id}
+	</select>
+
+</mapper>
