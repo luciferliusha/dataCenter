@@ -35,9 +35,9 @@
                 </div>
                 <div class="search">
                     <label>服务名称</label>
-                    <input type="text" class="easyui-text">
+                    <input id="serviceName" type="text" class="easyui-text">
                     <button class="btn">
-                        <span>查询</span>
+                        <span onclick="getServiceResourceList()">查询</span>
                     </button>
                     <button class="btn">
                         <span onclick="goDetail()">注册</span>
@@ -89,10 +89,14 @@
 
     // 查询服务资源列表
     function getServiceResourceList() {
+        var param = {
+            serviceName: $("#serviceName").val()
+        }
         $.ajax({
             url:'/serverRelease/getServiceResourceList',
             type: 'get',
             dataType:"json",
+            data: param,
             success:function(res) {
                 var serverReleaseStr = '';
                 for (var i = 0;i<res.length;i++) {
@@ -101,7 +105,6 @@
                     serverReleaseStr +=         '<span class="span-name" onclick="goDetail()">服务资源信息</span>'
                     serverReleaseStr +=     '</div>'
                     serverReleaseStr +=     '<div class="detailContent">'
-                    serverReleaseStr +=         '<p><span>资源名称 ：</span>' + res[i].serviceName + '</p>'
                     serverReleaseStr +=         '<p><span>服务名称 ：</span>' + res[i].serviceName + '</p>'
                     serverReleaseStr +=         '<p><span>描述 ：</span>' + res[i].serviceDesc + '</p>'
                     serverReleaseStr +=     '</div>'

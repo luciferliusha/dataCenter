@@ -10,7 +10,12 @@
 	        service_name "serviceName",
 	        service_desc "serviceDesc"
         FROM
-	        dataservice;
+	        dataservice
+		<where>
+			<if test="serviceName != null and serviceName != ''">
+				and service_name like '%' #{serviceName} '%'
+			</if>
+		</where>
 	</select>
 
 	<insert id="saveServiceResource" parameterType="map">

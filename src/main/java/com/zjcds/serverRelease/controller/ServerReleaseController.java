@@ -48,9 +48,9 @@ public class ServerReleaseController {
      * @return
      */
     @RequestMapping(value = "/getServiceResourceList", method = RequestMethod.GET)
-    public List<Map<String,Object>> getServiceResourceList() {
+    public List<Map<String,Object>> getServiceResourceList(HttpServletRequest request,@RequestParam Map<String,Object> param) {
         // 查询数据资源信息列表数据
-        List<Map<String,Object>> result = serverReleaseService.getServiceResourceList();
+        List<Map<String,Object>> result = serverReleaseService.getServiceResourceList(param);
         log.info("查询数据资源列表");
         return result;
     }

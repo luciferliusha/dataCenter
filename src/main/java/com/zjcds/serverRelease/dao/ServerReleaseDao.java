@@ -13,7 +13,9 @@ import java.util.Map;
  */
 @Repository
 public interface ServerReleaseDao {
-    List<Map<String,Object>>  getServiceResourceList();
+
+    List<Map<String, Object>> getServiceResourceList(Map<String, Object> param);
 
     int saveServiceResource(Map<String, Object> params);
+
 }

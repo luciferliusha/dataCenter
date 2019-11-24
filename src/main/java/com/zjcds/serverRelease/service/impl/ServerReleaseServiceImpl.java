@@ -19,11 +19,12 @@ public class ServerReleaseServiceImpl implements ServerReleaseService {
     @Autowired
     private ServerReleaseDao serverReleaseDao;
 
-    public List<Map<String, Object>> getServiceResourceList() {
-        return serverReleaseDao.getServiceResourceList();
-    }
-
     public int saveServiceResource(Map<String, Object> params) {
         return serverReleaseDao.saveServiceResource(params);
     }
+
+    public List<Map<String, Object>> getServiceResourceList(Map<String, Object> param) {
+        return serverReleaseDao.getServiceResourceList(param);
+    }
+
 }
