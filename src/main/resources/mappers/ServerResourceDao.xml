@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 标识映射文件  -->
+<mapper namespace="com.zjcds.serverResource.dao.ServerResourceDao">
+    <select id="getServiceResourceList" resultType="java.util.Map">
+		SELECT
+	        id "id",
+	        service_name "serviceName",
+	        service_desc "serviceDesc"
+        FROM
+	        dataservice
+		<where>
+			and service_type = #{serviceType}
+			<if test="serviceName != null and serviceName != ''">
+				and service_name like '%' #{serviceName} '%'
+			</if>
+		</where>
+	</select>
+
+	<insert id="saveServiceResource" parameterType="map">
+		insert into dataservice
+		(
+			service_type,
+			service_name,
+			service_desc,
+			db_ip,
+			db_port,
+			db_name,
+			db_table_name,
+			db_username,
+			db_password,
+			wsdl_ip,
+			wsdl_port,
+			wsdl_url,
+			restful_method,
+			restful_ip,
+			restful_port,
+			restful_url,
+			restful_param,
+			ftp_ip,
+			ftp_port,
+			ftp_username,
+			ftp_password
+		)
+		values
+		(
+			#{serviceType},
+			#{serviceName},
+			#{serviceDesc},
+			#{dbIp},
+			#{dbPort},
+			#{dbName},
+			#{dbTableName},
+			#{dbUsername},
+			#{dbPassword},
+			#{wsdlIp},
+			#{wsdlPort},
+			#{wsdlUrl},
+			#{restfulMethod},
+			#{restfulIp},
+			#{restfulPort},
+			#{restfulUrl},
+			#{restfulParam},
+			#{ftpIp},
+			#{ftpPort},
+			#{ftpUsername},
+			#{ftpPassword}
+		)
+	</insert>
+
+	<select id="getServerResourceById" parameterType="string" resultType="java.util.Map">
+		SELECT
+            id "id",
+            service_name "serviceName",
+            service_desc "serviceDesc",
+            db_ip "dbIp",
+            db_port "dbPort",
+            db_name "dbName",
+            db_table_name "dbTableName",
+            db_username "dbUsername",
+            db_password "dbPassword",
+            wsdl_ip "wsdlIp",
+            wsdl_port "wsdlPort",
+            wsdl_url "wsdlUrl",
+            restful_method "restfulMethod",
+            restful_ip "restfulIp",
+            restful_port "restfulPort",
+            restful_url "restfulUrl",
+            restful_param "restfulParam",
+            ftp_ip "ftpIp",
+            ftp_port "ftpPort",
+            ftp_username "ftpUsername",
+            ftp_password "ftpPassword"
+        FROM
+            dataservice
+		WHERE id = #{id}
+	</select>
+
+    <select id="getDataItem" resultType="java.util.Map">
+        SELECT
+            column_comment "columnComment",
+            column_name "columnName",
+            data_type "dataType",
+            character_maximum_length "characterMaximumLength"
+        FROM
+            information_schema.columns
+        WHERE
+            table_schema = 'dataservice'
+        AND table_name = 'dataservice'
+    </select>
+</mapper>

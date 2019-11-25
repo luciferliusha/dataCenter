@@ -27,6 +27,18 @@ body {
     height: 35px;
     margin-top: -10px;
 }
+.wrap .exit{
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: center;
+    color:rgb(0, 48, 62);
+    background-color: #ddd;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+}
 .wrap .title{
     color: #00303E;
     font-size: 24px;
@@ -42,6 +54,7 @@ body {
     cursor: pointer;
     color: #00303E;
     font-size: 16px;
+    margin-right: 15px;
 }
 .wrap .user img {
     display: inline-block;

@@ -66,7 +66,7 @@
     function addDataResource() {
         // 提交的参数
         var params = {
-            resourceType: '111',
+            resourceType: getQueryString("resourceType"),
             resourceName : $("#resourceName").val(),
             tableName1 : $("#tableName1").val(),
             description : $("#description").val(),
@@ -80,10 +80,11 @@
             data: params,
             success:function(res) {
                 if (res.message === 'success') {
-                    alert("添加成功！");
+                    alert("注册成功！");
                 } else {
-                    alert("添加失败！");
+                    alert("注册失败！");
                 }
+                window.location.href = "/dataResource/resourceInfo";
             }
         });
         return false;

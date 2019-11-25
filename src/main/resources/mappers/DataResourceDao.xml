@@ -16,6 +16,7 @@
         FROM
             dataresource
         <where>
+            and resource_type = #{resourceType}
             <if test="resourceName != null and resourceName != ''">
              and resource_name like '%' #{resourceName} '%'
             </if>

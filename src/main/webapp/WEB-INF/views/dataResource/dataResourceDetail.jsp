@@ -36,6 +36,7 @@
             <jsp:include page="../../common/footer.jsp"></jsp:include>
         </div>
     </div>
+</div>
 </body>
 </html>
 <script type="text/javascript">
@@ -59,11 +60,10 @@
                     dataResourceStr += '<p><span>更新周期：</span>' + res.updateCycle+ '</p>'
                     dataResourceStr += '<p><span>备注：</span>' + res.remark + '</p>';
                 $("#resourceDetail").html(dataResourceStr);
-                //$("#dbip").val(res.dbip)
             }
         })
     }
-    // 跳转到资源注册页面
+    // 跳转到资源列表页面
     function goBackResourceInfo() {
         window.location.href = "/dataResource/resourceInfo";
     }

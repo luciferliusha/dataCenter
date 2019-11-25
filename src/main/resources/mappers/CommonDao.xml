@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 标识映射文件  -->
+<mapper namespace="com.zjcds.common.dao.CommonDao">
+    <select id="getItem" resultType="java.util.Map" parameterType="map">
+        SELECT
+            group_code "groupCode",
+            item_code "itemCode",
+            item_name "itemName"
+        FROM
+            tb_code
+        WHERE group_code = #{groupCode}
+    </select>
+</mapper>

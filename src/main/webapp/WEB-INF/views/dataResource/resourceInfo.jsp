@@ -17,17 +17,9 @@
     <jsp:include page="../../common/header.jsp"></jsp:include>
     <div class="content-wrap">
         <div class="main-content">
-            <div class="left">
-                <div class="menu-list">
-                    <p class="title more curMenu">数据资源分类1
-                        <img src="images/seeMore.png">
-                    </p>
-                </div>
-                <div class="menu-list">
-                    <p class="title more">数据资源分类2
-                        <img src="images/seeMore.png">
-                    </p>
-                </div>
+            <%-- 动态加载数据资源分类 --%>
+            <div id="resourceType" class="left">
+
             </div>
             <div class="right">
                 <div class="tagTitle">
@@ -56,9 +48,8 @@
 <script type="text/javascript">
     // 页面一加载就执行
     $(function () {
-        // 切换一级菜单
-        switchMenu();
-        getDataResourceList();
+        // 获取数据资源分类
+        getDataResourceType();
     });
     // 切换一级菜单
     function switchMenu() {
@@ -66,11 +57,13 @@
             $(".menu-list").find("p").removeClass("curMenu");
             $(this).addClass("curMenu");
             $(".yiji").text($(this).text());
+            getDataResourceList();
         });
     }
     // 跳转到资源注册页面
     function goRegister() {
-        window.location.href = "/dataResource/resourceRegister";
+        var resourceType = $("#resourceType").find(".curMenu").attr("id");
+        window.location.href = "/dataResource/resourceRegister?resourceType="+resourceType;
     }
 
     // 跳转资源详情页面
@@ -78,10 +71,38 @@
         window.location.href = "/dataResourceDetail/dataResourceDetail?id="+id
     }
 
+    // 获取数据资源分类
+    function getDataResourceType() {
+        var param = {
+            groupCode: "data_resource"
+        }
+        $.ajax({
+            url:'/common/getItem',
+            type: 'get',
+            data: param,
+            dataType:"json",
+            success:function(res) {
+                var resourceTypeStr = '';
+                for (var i = 0;i<res.length;i++) {
+                    resourceTypeStr += '<div class="menu-list">';
+                    resourceTypeStr += '<p id="' + res[i].itemCode+ '" class="title more">' + res[i].itemName+ '';
+                    resourceTypeStr += '<img src="images/seeMore.png">';
+                    resourceTypeStr += '</p>';
+                    resourceTypeStr += '</div>';
+                }
+                $("#resourceType").html(resourceTypeStr);
+                $("#resourceType").find(".menu-list:first").find("p").addClass("curMenu");
+                // 切换一级菜单
+                switchMenu();
+                getDataResourceList();
+            }
+        })
+    }
     // 查询数据资源列表
     function getDataResourceList() {
         var param = {
-            resourceName: $("#resourceName").val()
+            resourceName: $("#resourceName").val(),
+            resourceType: $("#resourceType").find(".curMenu").attr("id")
         }
         $.ajax({
             url:'/dataResource/getDataResourceList',
@@ -90,7 +111,6 @@
             dataType:"json",
             success:function(res) {
                 var dataResourceStr = '';
-                console.log(res)
                 for (var i = 0;i<res.length;i++) {
                     dataResourceStr += '<div class="detail">'
                     dataResourceStr +=     '<div class="detailTitle">'

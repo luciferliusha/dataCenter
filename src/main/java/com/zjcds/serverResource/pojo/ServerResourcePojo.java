@@ -1,4 +1,4 @@
-package com.zjcds.serverRelease.pojo;
+package com.zjcds.serverResource.pojo;
 
 /**
  * @Description:
@@ -6,7 +6,7 @@ package com.zjcds.serverRelease.pojo;
  * @Date: Created in 10:13 2019/11/19
  * @Modified By:
  */
-public class ServerReleasePojo {
+public class ServerResourcePojo {
     private int id;
     private String serviceType;
     private String serviceNmae;

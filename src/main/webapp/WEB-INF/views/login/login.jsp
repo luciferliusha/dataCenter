@@ -5,26 +5,33 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//D HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>登录页面</title>
     <base href="<%=basePath %>">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript" src="js/jquery3.4.1/jquery3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="commons/validate.js"></script>
+    <script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
 </head>
 
 <body>
 <div id="login_frame">
-
    <img src="images/logo.png" class="logo">
-
-    <form method="post" action="">
-
-        <p><label class="label_input">用户名</label><input type="text" id="username" class="text_field"/></p>
-        <p><label class="label_input">密码</label><input type="text" id="password" class="text_field"/></p>
+    <form method="post" action="/login/login" onsubmit="return check()">
+        ${message}
+        <p><label class="label_input">用户名</label><input type="text" id="username" name="username" class="text_field"/></p>
+        <p><label class="label_input">密码</label><input type="password" id="password" name="password" class="text_field"/></p>
 
         <div id="login_control">
-            <input type="button" id="btn_login" value="登录" οnclick="login();"/>
-            <a id="forget_pwd" href="forget_pwd.html">忘记密码？</a>
+            <input type="submit" id="btn_login" value="登录"/>
+            <%--  <a id="forget_pwd" href="forget_pwd.html">忘记密码？</a>--%>
         </div>
     </form>
 </div>
@@ -32,27 +39,17 @@
 </body>
 </html>
 <script>
-    function login() {
-
-        var username = document.getElementById("username");
-        var pass = document.getElementById("password");
-
-        if (username.value == "") {
-
+    function check() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        if (username === "" || username === null) {
             alert("请输入用户名");
-
-        } else if (pass.value  == "") {
-
+            return false;
+        } else if (password === "" || password === null) {
             alert("请输入密码");
-
-        } else if(username.value == "admin" && pass.value == "123456"){
-
-            window.location.href="welcome.html";
-
+            return false;
         } else {
-
-            alert("请输入正确的用户名和密码！")
-
+            return true;
         }
     }
 </script>

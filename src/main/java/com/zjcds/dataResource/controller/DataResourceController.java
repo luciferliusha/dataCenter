@@ -46,7 +46,8 @@ public class DataResourceController {
      * @return
      */
     @RequestMapping(value = "/getDataResourceList", method = RequestMethod.GET)
-    public List<Map<String, Object>> getDataResourceList(HttpServletRequest request,@RequestParam Map<String,Object> param) {
+    public List<Map<String, Object>> getDataResourceList(HttpServletRequest request, @RequestParam Map<String,
+            Object> param) {
         // 查询数据资源信息列表数据
         List<Map<String, Object>> result = dataResourceService.getDataResourceList(param);
         log.info("查询数据资源列表");
@@ -55,14 +56,14 @@ public class DataResourceController {
 
 
     /**
-     * 返回服务资源信息注册页面
+     * 返回数据资源信息注册页面
      *
      * @return
      */
     @RequestMapping("/resourceRegister")
     public ModelAndView resourceRegister() {
         ModelAndView mv = new ModelAndView("dataResource/resourceRegister");
-        log.info("返回服务资源信息注册页面");
+        log.info("返回数据资源信息注册页面");
         mv.addObject("flag", "2");
         return mv;
     }

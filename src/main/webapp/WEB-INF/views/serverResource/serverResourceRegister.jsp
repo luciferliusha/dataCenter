@@ -20,24 +20,13 @@
                 <div class="top-wrap">
                     <div class="ul-wrap">
                         <ul class="menu-wrap">
-                            <li class="current_li">基础信息</li>
-                            <li>服务信息</li>
+                            <li class="current_li">服务信息</li>
                             <li>示例代码</li>
-                            <li>联系我们</li>
                         </ul>
                     </div>
                 </div>
                 <div class="service-detail">
                     <div class="detail">
-                        <div class="detail-content">
-                            <p>接口地址：http://ip:端口/serverResourceDetail/serverResourceDetail</p>
-                            <p>返回格式：json</p>
-                            <p>请求方式：get/post</p>
-                            <p>请求示例：http://192.168.21.66:8000/ds/server</p>
-                            <p>接口备注：xxx</p>
-                        </div>
-                    </div>
-                    <div class="detail" style="display:none;">
                         <div class="detailTitle">
                             <span class="span-name" style="text-decoration: none;cursor: default;">服务基本信息</span>
                         </div>
@@ -104,7 +93,7 @@
                             <%--  `restful` --%>
                             <div class="server-type" id="restful" style="margin-left: 100px;display: none">
                                 <p class="pstyle">
-                                    <span>restful：</span>
+                                    <span>restful请求方式：</span>
                                     <input id="restfulMethod" type="text" placeholder="请输入请求方式" style="width: 200px;height: 20px;"/>
                                 </p>
                                 <p class="pstyle">
@@ -125,7 +114,7 @@
                             <%--  ftp  --%>
                             <div class="server-type" id="ftp" style="margin-left: 100px;display: none">
                                 <p class="pstyle">
-                                    <span>ftp：</span>
+                                    <span>IP：</span>
                                     <input id="ftpIp" type="text" placeholder="请输入IP" style="width: 200px;height: 20px;"/>
                                 </p> <p class="pstyle">
                                     <span>端口：</span>
@@ -138,108 +127,84 @@
                                     <input id="ftpPassword" type="text" placeholder="请输入密码" style="width: 200px;height: 20px;"/>
                                 </p>
                             </div>
-                            <p class="pstyle">
-                                <span>资源名称：</span>
-                                <select id="resourceName" placeholder="请选择资源名称" style="width: 200px;height: 25px;" onchange="switchServerType()">
-                                    <option value="resource1">资源名称1</option>
-                                    <option value="resource2">资源名称2</option>
-                                    <option value="resource3">资源名称3</option>
-                                    <option value="resource4">资源名称4</option>
-                                </select>
-                            </p>
                         </div>
+                        <button class="btn" style="margin-left: 1000px;margin-bottom:20px;">
+                            <span onclick="goBackServerResource()">返回</span>
+                        </button>
+                        <button class="btn" style="float:right;margin-bottom:20px;">
+                            <span onclick="addServiceResource()">提交</span>
+                        </button>
                         <div class="detailTitle">
-                            <input id="checkDataId" type="checkbox" onchange="checkData()"/>
                             <span class="span-name" style="text-decoration: none;cursor: default;">数据项</span>
-                            <button id="dataResourceBtn" class="btn" style="display:none;margin-left: 10px;" onclick="addDataResource()">
-                                <span>注册</span>
-                            </button>
                         </div>
-                        <div id="dataResourceTable" style="margin: 10px 15px;display: none">
+                        <div id="dataResourceTable" style="margin: 10px 15px;">
                             <table class="tableWrap">
                                 <thead>
                                 <th>数据项名称</th>
                                 <th>表字段名称</th>
                                 <th>数据类型</th>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                </tr>
-                                <tr>
-                                    <td>xx</td>
-                                    <td>xx</td>
-                                    <td>xx</td>
-
-                                </tr>
+                                <tbody id="dataItem">
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="detail" style="display:none;">
-                        <div class="detail-content">
-                            <p>请求示例说明：</p>
-                            <p>请求示例描述：</p>
-                            <p style="margin-top: 20px">返回示例说明：</p>
-                            <p>返回示例描述：</p>
+                        <div class="detailTitle">
+                            <span class="span-name" style="text-decoration: none;">数据库示例代码</span>
                         </div>
-                    </div>
-                    <div class="detail" style="display:none;">
-                        <div class="detail-content">
-                            <p>所属单位：陕西省交通厅</p>
-                            <p>所属部门：航务局</p>
-                            <p>联系人：xxx</p>
-                            <p>联系方式：xxx</p>
-                            <p>管理单位：陕西省信息中心</p>
-                            <p>管理单位联系电话：029-xxx</p>
+                        <div class="detailContent">
+                            <p><span>IP ： 192.168.43.179</span></p>
+                            <p><span>端口 ：5454</span></p>
+                            <p><span>数据库名称 ：test</span></p>
+                            <p><span>表名 ：table_name</span></p>
+                            <p><span>用户名 ：root</span></p>
+                            <p><span>密码 ：root</span></p>
+                        </div>
+                        <div class="detailTitle">
+                            <span class="span-name" style="text-decoration: none;">WebService示例代码</span>
+                        </div>
+                        <div class="detailContent">
+                            <p><span>IP ： 192.168.43.179</span></p>
+                            <p><span>端口 ：80</span></p>
+                            <p><span>url ：http://schemas.xmlsoap.org/wsdl/</span></p>
+                        </div>
+                        <div class="detailTitle">
+                            <span class="span-name" style="text-decoration: none;">Restful示例代码</span>
+                        </div>
+                        <div class="detailContent">
+                            <p><span>请求方式 ：GET</span></p>
+                            <p><span>IP ：192.168.43.179</span></p>
+                            <p><span>端口 ：8080</span></p>
+                            <p><span>url ：http://192.168.43.179:8080/serverResource/getServiceResourceList</span></p>
+                            <p><span>参数 ：{serverName : xxx}</span></p>
+                        </div>
+                        <div class="detailTitle">
+                            <span class="span-name" style="text-decoration: none;">FTP示例代码</span>
+                        </div>
+                        <div class="detailContent">
+                            <p><span>IP ：192.168.43.179</span></p>
+                            <p><span>端口 ：8080</span></p>
+                            <p><span>用户名 ：test</span></p>
+                            <p><span>密码 ：123456</span></p>
                         </div>
                     </div>
                 </div>
-                <button class="btn" style="margin-left: 1050px;margin-bottom:20px;">
-                    <span onclick="addServiceResource()">提交</span>
-                </button>
-                <button class="btn" style="float:right;margin-right: 30px;margin-bottom:20px;">
+                <button id="goBack" class="btn" style="margin-left: 1100px;margin-bottom:20px;display: none;">
                     <span onclick="goBackServerResource()">返回</span>
-                </button>
-            </div>
-        </div>
-        <%--注册数据项信息弹框--%>
-        <div id="win1" style="display: none">
-            <div style="margin: 20px 15px;">
-                <table class="tableWrap">
-                    <tr>
-                        <td style="background-color: #f7fcff;font-weight: 600;">数据项名称</td>
-                        <td>
-                            <input type="text" placeholder="请输入数据项名称" style="width: 200px;height: 20px;"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: #f7fcff;font-weight: 600;">数据项类型</td>
-                        <td>
-                            <input type="text" placeholder="请输入数据项类型" style="width: 200px;height: 20px;"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: #f7fcff;font-weight: 600;">数据项长度</td>
-                        <td>
-                            <input type="text" placeholder="请输入数据项长度" style="width: 200px;height: 20px;"/>
-                        </td>
-                    </tr>
-                </table>
-                <button class="btn" style="float:right;margin-right: 30px;margin-top:20px;">
-                    <span onclick="confirm()">确定</span>
                 </button>
             </div>
         </div>
         <jsp:include page="../../common/footer.jsp"></jsp:include>
     </div>
+</div>
 </body>
 </html>
 <script type="text/javascript">
     $(function() {
         switchMenu();
+        // 查询数据项信息
+        getDataItem();
     });
 
 
@@ -247,6 +212,7 @@
     function addServiceResource() {
         // 提交的参数
         var params = {
+            serviceType: getQueryString("serviceType"),
             serviceName : $("#serviceName").val(),
             serviceDesc : $("#serviceDesc").val(),
             dbIp : $("#dbIp").val(),
@@ -269,24 +235,20 @@
             ftpPassword : $("#ftpPassword").val()
         }
         $.ajax({
-            url: '/serverRelease/saveServiceResource',
+            url: '/serverResource/saveServiceResource',
             type: "post",
             dataType: "json",
             data: params,
             success:function(res) {
                 if (res.message === 'success') {
-                    alert("添加成功！");
+                    alert("注册成功！");
                 } else {
-                    alert("添加失败！");
+                    alert("注册失败！");
                 }
+                window.location.href = "/serverResource/serverResourceInfo";
             }
         });
         return false;
-    }
-
-    // 跳转到服务注册页面
-    function goBackResourceInfo() {
-        window.location.href = "/serverReleaseInfo/serverReleaseInfo";
     }
 
     function switchMenu() {
@@ -297,10 +259,15 @@
             var liIndex = $(this).index();
             $(".detail").hide();
             $(".detail").eq(liIndex).show();
+            if (liIndex === 0) {
+                $("#goBack").hide();
+            } else {
+                $("#goBack").show()
+            }
         })
     }
     function goBackServerResource() {
-        window.location.href = "serverRelease/serverReleaseInfo"
+        window.location.href = "/serverResource/serverResourceInfo";
     }
 
     // 切换服务类型
@@ -309,26 +276,24 @@
         $(".server-type").hide();
         $("#"+serverTypeId).show();
     }
-    // 注册数据项信息
-    function addDataResource() {
-        $("#win1").show();
-        $("#win1").window({
-            title:"弹出框",
-            width:400,
-            height:400,
-            modal:true   //这是一个模式窗口，只能点击弹出框，不允许点击别处
-        })
-    }
-    function confirm() {
-        $("#dataResourceTable").show();
-        $("#win1").window("close");
-    }
-    // checkBox事件
-    function checkData() {
-        if ($("#checkDataId").is(":checked")) {
-            $("#dataResourceBtn").show()
-        } else {
-            $("#dataResourceBtn").hide()
-        }
+
+    // 查询数据项信息
+    function getDataItem() {
+        $.ajax({
+            url: '/serverResource/getDataItem',
+            type: "get",
+            dataType: "json",
+            success:function(res) {
+                var dataItemStr = '';
+                for (var i = 0;i<res.length;i++) {
+                    dataItemStr += '<tr>';
+                    dataItemStr += '<td>' + res[i].columnComment + '</td>';
+                    dataItemStr += '<td>' + res[i].columnName + '</td>';
+                    dataItemStr += '<td>' + res[i].dataType + '</td>';
+                    dataItemStr += '</tr>'
+                }
+                $("#dataItem").html(dataItemStr);
+            }
+        });
     }
 </script>

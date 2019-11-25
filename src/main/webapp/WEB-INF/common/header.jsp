@@ -28,9 +28,11 @@
         <span class="title">陕西省港航信息资源平台</span>
         <p class="user">
             <imp crc="images/user.png">
-            <span class="exit">退出</span>
-            <span class="line">|</span>
-            <span title="登录" class="user_name" onclick="login()">登录</span>
+            <form method="post" action="/login/logout" style="display: inline-block;float:right;">
+                <input type="submit" class="exit" value="退出"/>
+            </form>
+            <%-- <span class="line">|</span>--%>
+            <%--<span title="登录" class="user_name" onclick="login()">登录</span>--%>
         </p>
     </div>
     <div class="content-menu">
@@ -38,17 +40,17 @@
             <c:if test="${flag == 1}">
                 <li class="menu-item active"><a href="index/index">首页</a></li>
                 <li class="menu-item"><a href="/dataResource/resourceInfo">数据资源目录</a></li>
-                <li class="menu-item"><a href="serverRelease/serverReleaseInfo">服务资源目录</a></li>
+                <li class="menu-item"><a href="serverResource/serverResourceInfo">服务资源目录</a></li>
             </c:if>
             <c:if test="${flag == 2}">
                 <li class="menu-item"><a href="index/index">首页</a></li>
                 <li class="menu-item active"><a href="/dataResource/resourceInfo">数据资源目录</a></li>
-                <li class="menu-item"><a href="serverRelease/serverReleaseInfo">服务资源目录</a></li>
+                <li class="menu-item"><a href="serverResource/serverResourceInfo">服务资源目录</a></li>
             </c:if>
             <c:if test="${flag == 3}">
                 <li class="menu-item"><a href="index/index">首页</a></li>
                 <li class="menu-item"><a href="/dataResource/resourceInfo">数据资源目录</a></li>
-                <li class="menu-item active"><a href="serverRelease/serverReleaseInfo">服务资源目录</a></li>
+                <li class="menu-item active"><a href="serverResource/serverResourceInfo">服务资源目录</a></li>
             </c:if>
             <%--<li class="menu-item"><a href="#">数据采集</a></li>--%>
         </ul>

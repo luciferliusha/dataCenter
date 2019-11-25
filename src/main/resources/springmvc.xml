@@ -19,6 +19,8 @@
 	<context:component-scan base-package="com.zjcds" />
 	<!--放行静态资源  -->
 	<mvc:default-servlet-handler/>
+	<mvc:view-controller path="/" view-name="/login/login"/>
+	<mvc:view-controller path="login" view-name="/login/login"/>
 	<!-- 配置视图解析器 -->
 	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 配置前缀 -->
@@ -49,4 +51,13 @@
 			</list>
 		</property>
 	</bean>
+
+	<!--配置拦截器-->
+	<mvc:interceptors>
+		<!--登录拦截器-->
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.zjcds.interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

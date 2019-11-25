@@ -17,17 +17,9 @@
     <jsp:include page="../../common/header.jsp"></jsp:include>
     <div class="content-wrap">
         <div class="main-content">
-            <div class="left">
-                <div class="menu-list">
-                    <p class="title more curMenu">服务资源分类1
-                        <img src="images/seeMore.png">
-                    </p>
-                </div>
-                <div class="menu-list">
-                    <p class="title more">服务资源分类2
-                        <img src="images/seeMore.png">
-                    </p>
-                </div>
+            <%-- 动态加载资源分类--%>
+            <div id="serviceType" class="left">
+
             </div>
             <div class="right">
                 <div class="tagTitle">
@@ -40,7 +32,7 @@
                         <span onclick="getServiceResourceList()">查询</span>
                     </button>
                     <button class="btn">
-                        <span onclick="goDetail()">注册</span>
+                        <span onclick="goRegister()">注册</span>
                     </button>
                 </div>
                 <div class="detailDiv">
@@ -68,10 +60,8 @@
 <script type="text/javascript">
     // 页面一加载就 执行
     $(function () {
-        // 切换一级菜单
-        switchMenu();
-        // 得到服务资源列表
-        getServiceResourceList();
+        // 获取服务资源分类
+        getDataResourceType();
     });
     // 切换一级菜单
     function switchMenu() {
@@ -79,21 +69,56 @@
             $(".menu-list").find("p").removeClass("curMenu");
             $(this).addClass("curMenu");
             $(".yiji").text($(this).text());
+            getServiceResourceList();
         });
     }
 
-    // 跳转服务注册详情页面
-    function goDetail() {
-        window.location.href = "/serverResourceDetail/serverResourceDetail"
+    // 跳转服务注册页面
+    function goRegister() {
+        var serviceType = $("#serviceType").find(".curMenu").attr("id");
+        window.location.href = "/serverResource/serverResourceRegister?serviceType=" + serviceType;
+    }
+    // 跳转服务资源详情页面
+    function goDetail(id) {
+        window.location.href = "/serverResource/serverResourceDetail?id=" + id;
     }
 
+    // 获取数据资源分类
+    function getDataResourceType() {
+        var param = {
+            groupCode: "server_resource"
+        }
+        $.ajax({
+            url:'/common/getItem',
+            type: 'get',
+            data: param,
+            dataType:"json",
+            success:function(res) {
+                var resourceTypeStr = '';
+                for (var i = 0;i<res.length;i++) {
+                    resourceTypeStr += '<div class="menu-list">';
+                    resourceTypeStr += '<p id="' + res[i].itemCode+ '" class="title more">' + res[i].itemName+ '';
+                    resourceTypeStr += '<img src="images/seeMore.png">';
+                    resourceTypeStr += '</p>';
+                    resourceTypeStr += '</div>';
+                }
+                $("#serviceType").html(resourceTypeStr);
+                $("#serviceType").find(".menu-list:first").find("p").addClass("curMenu");
+                // 切换一级菜单
+                switchMenu();
+                // 得到服务资源列表
+                getServiceResourceList();
+            }
+        })
+    }
     // 查询服务资源列表
     function getServiceResourceList() {
         var param = {
-            serviceName: $("#serviceName").val()
+            serviceName: $("#serviceName").val(),
+            serviceType: $("#serviceType").find(".curMenu").attr("id")
         }
         $.ajax({
-            url:'/serverRelease/getServiceResourceList',
+            url:'/serverResource/getServiceResourceList',
             type: 'get',
             dataType:"json",
             data: param,
@@ -102,7 +127,7 @@
                 for (var i = 0;i<res.length;i++) {
                     serverReleaseStr += '<div class="detail">'
                     serverReleaseStr +=     '<div class="detailTitle">'
-                    serverReleaseStr +=         '<span class="span-name" onclick="goDetail()">服务资源信息</span>'
+                    serverReleaseStr +=         '<span class="span-name" onclick="goDetail(' + res[i].id + ')">服务资源信息</span>'
                     serverReleaseStr +=     '</div>'
                     serverReleaseStr +=     '<div class="detailContent">'
                     serverReleaseStr +=         '<p><span>服务名称 ：</span>' + res[i].serviceName + '</p>'
